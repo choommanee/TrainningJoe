@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         String tag = "14AprilV2";
         String urlGetUser = "http://swiftcodingthai.com/joe/getUserJoe.php";
-        String truePassword = null;
+        String truePassword = null,strName=null;
         MessageAlert messageAlert = new MessageAlert(MainActivity.this);
 
         try {
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (userString.equals(jsonObject.getString("user"))) {
                     aBoolean = false;
                     truePassword = jsonObject.getString("password");
+                    strName = jsonObject.getString("Name");
                 }
             }
             // For
@@ -108,7 +110,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 messageAlert.myDialog(getString(R.string.title_user_false),
                         getString(R.string.mess_user_false));
             } else if (passwordString.equals(truePassword)) {
-                Intent intent = new Intent();
+
+                Toast.makeText(MainActivity.this,"Welcome "+strName,Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this,ServiceActivity.class);
+                intent.putExtra("Name", strName);
                 startActivity(intent);
             } else {
                 messageAlert.myDialog(getString(R.string.title_password_false),
