@@ -5,4 +5,6 @@
     <string name="Password">Password</string>
     <string name="register">Register</string>
     <string name="username">name</string>
+    <string name="havespave">Have Space</string>
+    <string name="message_have_space">Please Fill All Blank</string>
 </resources>

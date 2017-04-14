@@ -24,6 +24,7 @@
                 android:src="@mipmap/ic_name" />
 
             <EditText
+                android:id="@+id/edtName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/username"
@@ -43,6 +44,7 @@
                 android:src="@mipmap/ic_user" />
 
             <EditText
+                android:id="@+id/edtUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/user"
@@ -61,6 +63,7 @@
                 android:src="@mipmap/ic_password" />
 
             <EditText
+                android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/Password"
@@ -72,6 +75,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
