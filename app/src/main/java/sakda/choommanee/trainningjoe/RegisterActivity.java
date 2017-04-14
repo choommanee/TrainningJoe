@@ -2,9 +2,11 @@ package sakda.choommanee.trainningjoe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -14,6 +16,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     String nameString,userString, passwordString;
+    String urlAdd = "http://swiftcodingthai.com/joe/addUserJoe.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +50,33 @@ public class RegisterActivity extends AppCompatActivity {
                                 getString(R.string.message_have_space));
                 } else {
                     // No Space
+                    uploadValueToServer();
 
                 }
 
 
             }   //OnClick
         });
+    }
+
+    private void uploadValueToServer() {
+
+        try {
+            PostUserToServer postUserToServer = new PostUserToServer(RegisterActivity.this,
+            nameString,userString,passwordString,urlAdd);
+
+            postUserToServer.execute();
+            Log.d("14aprilV1","Response==>"+postUserToServer.get());
+            if (Boolean.parseBoolean(postUserToServer.get())) {
+                finish();
+            } else {
+                Toast.makeText(RegisterActivity.this,"Cannot Save User Data",Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (Exception e) {
+            Log.d("14ApilV1","e upload==>"+e.toString());
+        }
+
     }
 
     private boolean checkSpace() {

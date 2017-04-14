@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText userEditText, passwordEditText;
     private TextView textView;
     private Button button;
+    private  String userString,passwordString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,5 +51,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);   // Open new Form to mainActivity Main
 
         }
+
+        //For Buttom
+        if (view == button) {
+            // get Value from Edit Text
+
+            userString = userEditText.getText().toString().trim();
+            passwordString = passwordEditText.getText().toString().trim();
+
+            //Check Space
+            MessageAlert messageAlert = new MessageAlert(MainActivity.this);
+            if ((userString.length() == 0) || (passwordString.length() == 0)) {
+                //have space
+                messageAlert.myDialog(getResources().getString(R.string.havespave),
+                        getResources().getString(R.string.message_have_space));
+
+            } else {
+                //No Space
+
+                checkUserAndPass();
+            }
+        }
+    }
+
+    private void checkUserAndPass() {
+
     }
 }   //Main Class
