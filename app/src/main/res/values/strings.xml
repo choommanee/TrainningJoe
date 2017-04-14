@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Trainning Joe</string>
+    <string name="login">Login</string>
+    <string name="user">User Name</string>
+    <string name="Password">Password</string>
+    <string name="register">Register</string>
 </resources>
